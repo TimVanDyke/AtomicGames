@@ -14,6 +14,7 @@ public class Client {
 	OutputStreamWriter out;
 	Gson gson = new Gson();
 	Albert albert;
+	int numTurns = 1;
 
 	public Client(Socket socket, int[][] moves) {
 		try {
@@ -27,16 +28,34 @@ public class Client {
 
 	public void start() {
 		System.out.println("Starting client processing ...");
-		GameState state;
+		GameState trueState;
+		GameState albertsBrain;
+//		try {
+//			while ((trueState = readStateFromServer()) != null) {
+//				int[] move = albert.computeMove(trueState);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		closeStreams();
+//		albertsBrain = trueState;
+//		for (int i = 0; i < numTurns; i++) {
+//			int[] move = albert.computeMove(albertsBrain);
+//			respondWithMoveLocal(move);
+//		}
 		try {
-			while ((state = readStateFromServer()) != null) {
-				int[] move = albert.computeMove(state);
+			while ((trueState = readStateFromServer()) != null) {
+				int[] move = albert.computeMove(trueState);
 				respondWithMove(move);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		closeStreams();
+	}
+	
+	private void respondWithMoveLocal(int[] move) {
+		
 	}
 
 	private GameState readStateFromServer() throws IOException {
