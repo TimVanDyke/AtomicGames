@@ -15,4 +15,13 @@ public class Albert {
 		System.out.println("AI returning canned move for game state - " + state);
 		return moveList.next();
 	}
+	
+	/*
+	 * 
+	 */
+	public boolean legalMove() {
+		Boolean legal;
+		legal = true;
+		return legal;
+	}
 }
