@@ -3,11 +3,11 @@ package com.atomicobject.othello;
 import java.util.Arrays;
 import java.util.ListIterator;
 
-public class AI {
+public class Albert {
 	
 	ListIterator<int[]> moveList;
 
-	public AI(int[][] moves) {
+	public Albert(int[][] moves) {
 		moveList = Arrays.asList(moves).listIterator();
 	}
 

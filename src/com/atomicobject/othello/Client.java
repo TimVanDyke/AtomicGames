@@ -13,11 +13,11 @@ public class Client {
 	BufferedReader input;
 	OutputStreamWriter out;
 	Gson gson = new Gson();
-	AI ai;
+	Albert albert;
 
 	public Client(Socket socket, int[][] moves) {
 		try {
-			ai = new AI(moves);
+			albert = new Albert(moves);
 			input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new OutputStreamWriter(socket.getOutputStream());
 		} catch (IOException e) {
@@ -30,7 +30,7 @@ public class Client {
 		GameState state;
 		try {
 			while ((state = readStateFromServer()) != null) {
-				int[] move = ai.computeMove(state);
+				int[] move = albert.computeMove(state);
 				respondWithMove(move);
 			}
 		} catch (Exception e) {
