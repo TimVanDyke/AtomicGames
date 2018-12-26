@@ -16,9 +16,11 @@ public class Client {
 	Albert albert;
 	int numTurns = 1;
 
-	public Client(Socket socket, int[][] moves) {
+//	public Client(Socket socket, int[][] moves) {
+	public Client(Socket socket) {
 		try {
-			albert = new Albert(moves);
+			//albert = new Albert(moves);
+			albert = new Albert();
 			input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new OutputStreamWriter(socket.getOutputStream());
 		} catch (IOException e) {
@@ -29,7 +31,7 @@ public class Client {
 	public void start() {
 		System.out.println("Starting client processing ...");
 		GameState trueState;
-		GameState albertsBrain;
+		//GameState albertsBrain;
 //		try {
 //			while ((trueState = readStateFromServer()) != null) {
 //				int[] move = albert.computeMove(trueState);
@@ -54,9 +56,9 @@ public class Client {
 		closeStreams();
 	}
 	
-	private void respondWithMoveLocal(int[] move) {
-		
-	}
+//	private void respondWithMoveLocal(int[] move) {
+//		
+//	}
 
 	private GameState readStateFromServer() throws IOException {
 		System.out.println("Reading from server ...");
